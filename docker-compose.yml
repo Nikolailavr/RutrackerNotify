@@ -1,0 +1,14 @@
+services:
+  rutracker-notifier:
+    build:
+      dockerfile: ./docker-build/apps/Dockerfile
+      context: ./
+    container_name: rutracker_bot
+    restart: unless-stopped
+    env_file:
+      - ./src/.env
+    volumes:
+      - rutracker_data:/data
+
+volumes:
+  rutracker_data:
