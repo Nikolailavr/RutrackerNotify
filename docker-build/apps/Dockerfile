@@ -1,15 +1,17 @@
-FROM python:3.14-slim
+FROM python:3.11-slim
 
 # Копируем бинарник uv из официального образа
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-WORKDIR /src
+# Рабочая директория приложения
+WORKDIR /app
 
-# Скопируем файлы зависимостей для эффективного кэширования слоев
+# 1. Сначала копируем только конфигурацию зависимостей для кэширования слоев
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-cache
 
-# Копируем исходный код
-COPY /src .
+# 2. Копируем весь исходный код проекта (включая папку src)
+COPY . .
 
-CMD ["uv", "run", "main.py"]
+# 3. Указываем точный путь к скрипту запуска
+CMD ["uv", "run", "src/main.py"]
