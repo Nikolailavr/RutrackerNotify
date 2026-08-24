@@ -9,7 +9,7 @@ services:
       - ./src/.env
     volumes:
       - ./src:/src
-      - rutracker_data:./src/data
+      - rutracker_data:/src/data
 
 volumes:
   rutracker_data:
