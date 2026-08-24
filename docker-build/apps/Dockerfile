@@ -12,4 +12,4 @@ RUN uv sync --frozen --no-cache
 COPY src/ .
 
 # Запускаем скрипт
-CMD ["uv", "run", "src/main.py"]
+CMD ["uv", "run", "main.py"]

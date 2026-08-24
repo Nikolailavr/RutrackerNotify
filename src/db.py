@@ -1,7 +1,13 @@
 import sqlite3
+from pathlib import Path
+
 from config import BASE_PATH
 
-DB_PATH = BASE_PATH / "notified_topics.db"
+# Определяем папку data внутри src/ или /app/
+DATA_DIR = Path(__file__).resolve().parent / "data"
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+DB_PATH = DATA_DIR / "notified_topics.db"
 
 
 def init_db():
