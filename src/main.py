@@ -1,10 +1,10 @@
 import asyncio
 import logging
 
-from src.bot import send_notification, bot
-from src.config import settings
-from src.db import is_notified, mark_as_notified, init_db
-from src.parser import RutrackerParser
+from bot import send_notification, bot
+from config import settings
+from db import is_notified, mark_as_notified, init_db
+from parser import RutrackerParser
 
 logging.basicConfig(
     level=logging.INFO,
