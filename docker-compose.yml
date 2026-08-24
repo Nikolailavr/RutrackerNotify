@@ -8,8 +8,12 @@ services:
     env_file:
       - ./src/.env
     volumes:
-      - ./src:/src
-      - rutracker_data:/src/data
+      # Монтируем весь проект в /app
+      - ./:/app
+      # ИЗОЛИРУЕМ виртуальное окружение контейнера от локальной машины:
+      - /app/.venv
+      # Volume для данных БД:
+      - rutracker_data:/app/src/data
 
 volumes:
   rutracker_data:
